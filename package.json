@@ -18,7 +18,8 @@
   "homepage": "https://github.com/bigxxxg/nodejsparser#readme",
   "devDependencies": {
     "needle": "^2.5.0",
-    "trees": "0.0.4"
+    "trees": "0.0.4",
+    "tress": "^1.1.4"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.3"
