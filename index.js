@@ -8,7 +8,7 @@ var fs = require('fs');
 const URL = 'https://classinform.ru/profstandarty.html';
 const results = [];
 const q = tress(work);
-q.success = done;
+q.drain = done;
 start();
 
 
