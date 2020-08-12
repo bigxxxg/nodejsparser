@@ -34,14 +34,18 @@ function work(url, cb) {
     needle('get', url).then(function(res){
         const $ = cheerio.load(res.body);
         const table = [];
-        if($('td:first-child > *:contains(Возможные)')) {
-            $('td:first-child > *:contains(Возможные)').each(function() {
+        if($('td:first-child:not(:last-child) > *:contains(Возможные)')) {
+            $('td:first-child:not(:last-child) > *:contains(Возможные)').each(function() {
                 table.push($(this).parent().next().children().text().trim());
             });
         }
-        if($('td:first-child :contains(Возможные)')) {
-            $('td:first-child :contains(Возможные)').each(function() {
-                table.push($(this).parent().next().children().text().trim());
+        if($('td:first-child:not(:last-child) :contains(Возможные)')) {
+            $('td:first-child:not(:last-child) :contains(Возможные)').each(function() {
+                
+                const i = {
+                    name:$(this).parent().next().children().text().trim(),
+                }
+                table.push(i);
             });
         }
         
@@ -53,6 +57,7 @@ function work(url, cb) {
             parentCode: $('#cont_txt >.full_width:nth-child(5) > .path > .one_fifth > a').text().trim(),
             name: $('.full_width > .four_fifth > h3').text().trim(),
             code: $('.full_width > .one_fifth > h3').text().trim(),
+
 
         }
         results.push(i);
